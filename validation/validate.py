@@ -37,22 +37,22 @@ def check_row(r):
     supplier_state = gstin[:2]
     is_intra = (pos == supplier_state)
 
-    # R1 — GSTIN format
+    # R1 - GSTIN format
     if not GSTIN_RE.match(gstin):
         issues.append(f"R1 invalid GSTIN format ({gstin!r}, {len(gstin)} chars)")
 
-    # R2 — valid GST rate
+    # R2 - valid GST rate
     if rate not in VALID_RATES:
         issues.append(f"R2 invalid GST rate ({rate:g}%); allowed: 0/5/12/18/28")
 
-    # R3 — intra vs inter tax type
+    # R3 - intra vs inter tax type
     if rate > 0:
         if is_intra and igst > 0:
             issues.append("R3 intra-state supply charged IGST (should be CGST+SGST)")
         if (not is_intra) and (cgst > 0 or sgst > 0):
             issues.append("R3 inter-state supply charged CGST/SGST (should be IGST)")
 
-    # R4 — tax amounts correct
+    # R4 - tax amounts correct
     if is_intra:
         expected = round(taxable * rate / 200, 2)
         if round(cgst, 2) != expected or round(sgst, 2) != expected:
@@ -62,7 +62,7 @@ def check_row(r):
         if round(igst, 2) != expected:
             issues.append(f"R4 IGST should be {expected:g} (got {igst:g})")
 
-    # R5 — total reconciles
+    # R5 - total reconciles
     expected_total = round(taxable + cgst + sgst + igst, 2)
     if round(total, 2) != expected_total:
         issues.append(f"R5 total should be {expected_total:g} (got {total:g})")
