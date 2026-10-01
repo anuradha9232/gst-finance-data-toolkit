@@ -1,5 +1,12 @@
 # GST Finance Data Toolkit
 
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Domain-GST%20(India)-1F4E78?style=flat-square" alt="GST Domain" />
+  <img src="https://img.shields.io/badge/Validator-flags%205%2F15-2E75B6?style=flat-square" alt="Validator" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License MIT" />
+</p>
+
 A small, practical toolkit for **classifying and validating GST invoice data** in India - built from my own background keeping the books, invoicing, and maintaining GST records for a family business. It pairs a plain-English GST reference with a sample invoice register and an automated validator that catches the errors that matter.
 
 This is here because finance and accounting is a genuine domain I know well, and clean, correctly-classified financial data is exactly what many annotation and model-evaluation projects need a domain expert for.
